@@ -1,10 +1,8 @@
 FROM e2eteam/busybox:1.29
 
-SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
-
 USER ContainerAdministrator
 
-RUN Invoke-WebRequest  'https://cdn.mysql.com//archives/mysql-5.7/mysql-5.7.32-winx64.zip' -OutFile 'mysql-5.7.32-winx64.zip'; \
+RUN powershell -command Invoke-WebRequest  'https://cdn.mysql.com//archives/mysql-5.7/mysql-5.7.32-winx64.zip' -OutFile 'mysql-5.7.32-winx64.zip'; \
         Expand-Archive 'mysql-5.7.32-winx64.zip' -DestinationPath  C:\ ;\
         Remove-Item 'mysql-5.7.32-winx64.zip' -Force ; \
         Rename-Item 'c:\mysql-5.7.32-winx64' c:\mysql
