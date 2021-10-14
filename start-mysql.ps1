@@ -14,5 +14,6 @@ Start-Service mysql
 echo $env:Path
 
 mysql -u root -e "GRANT ALL ON *.* to root@'%' IDENTIFIED BY '$env:MYSQL_ROOT_PASSWORD'; FLUSH PRIVILEGES;"
+mysql -u root -e "GRANT ALL ON *.* to root@'localhost' IDENTIFIED BY '$env:MYSQL_ROOT_PASSWORD'; FLUSH PRIVILEGES;"
 
 tail -f C:\mysql\mysql.err
